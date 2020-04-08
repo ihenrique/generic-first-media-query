@@ -1,0 +1,67 @@
+//-----------------------------------
+// Generic first media query
+// 
+//  Easy to use media query mixins
+//
+//  Ex: 
+//
+//  @include only_mobile{ ... }
+//
+
+
+
+//-----------------------------------
+// CONFIG
+//-----------------------------------
+
+$tab-p-width:  640px; // Tablet Portrait width
+$tab-l-width:  960px; // Tablet landscape width
+$lap-width:   1140px; // Laptop width 
+
+//-----------------------------------
+// GENERIC FIRST
+//-----------------------------------
+
+@mixin only_mobile{
+    @media screen and ( max-width: $tab-p-width - 1px ){ @content; }
+}
+
+@mixin only_mobile_portrait{
+    @media screen and ( max-width: $tab-p-width - 1px ) and (orientation: portrait) { @content; }
+}
+
+@mixin only_mobile_landscape{
+    @media screen and ( max-width: $tab-p-width - 1px ) and (orientation: landscape){ @content; }
+}
+
+@mixin only_tablet-p{
+    @media screen and ( min-width: $tab-p-width ) and ( max-width: $tab-l-width - 1px ){ @content; }
+}
+
+@mixin only_tablet{
+    @media screen and ( min-width: $tab-p-width ) and ( max-width: $lap-width - 1px ){ @content; }
+}
+
+@mixin only_tablet-l{
+    @media screen and ( min-width: $tab-l-width ) and ( max-width: $lap-width - 1px ){ @content; }
+}
+
+@mixin only_desk{
+    @media screen and ( min-width: $lap-width ){ @content; }
+}
+
+@mixin mobile_and_tablet{
+    @media screen and ( max-width: $lap-width - 1px ){ @content; }
+}
+
+@mixin mobile_and_tablet-p{
+    @media screen and ( max-width: $tab-l-width - 1px ){ @content; }
+}
+
+@mixin tablet_and_desk{
+    @media screen and ( min-width: $tab-p-width ){ @content; }
+}
+
+@mixin tablet-l_and_desk{
+    @media screen and ( min-width: $tab-l-width ){ @content; }
+}
